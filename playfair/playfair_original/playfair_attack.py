@@ -67,7 +67,7 @@ def decrypt(cipher,space,opt=False):
 cipher=input("enter cipher text: ")
 import itertools
 from nltk.corpus import words
-key_length=3
+key_length=input("enter key length: ")
 #cipher=input("enter cipher text: ")
 keyspace=[''.join(x) for x in itertools.product('abcdefghklmnopqrstuvwxyz', repeat=key_length)]
 for key in keyspace:
