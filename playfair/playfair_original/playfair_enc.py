@@ -61,7 +61,7 @@ def encrypt(text,key):
         else:
             enc+=alpdic[i]
     return enc
-key=input("ENTER KEY FOR PLAYFAIR ENCRYPTION: ")
+key=input("ENTER KEY FOR PLAYFAIR ENCRYPTION: ").replace(" ","")
 text=input("text to be encrypted: ")
 cipher=playfair_encrypt(text,key)
 print("encrypted text: ",cipher)

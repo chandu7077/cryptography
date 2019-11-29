@@ -1,4 +1,5 @@
-kp=input("enter known plain text: ")
+from nltk.corpus import words
+#kp=input("enter known plain text: ")
 cp=input("enter cipher text: ")
 import math
 keyspace=[]
@@ -35,7 +36,9 @@ def affine_attack(cipher,kp):
     for i in keyspace:
         for j in range(0,26):
             enc=affine_decrypt(cipher,[i,j])
-            if enc==kp:
+            if enc in words.words():
                 print("KEY: ",[i,j]," TEXT: ",enc)
-affine_attack(cp,kp)
+            else:
+                print("KEY:",[i,j]," failed")
+affine_attack(cp,kp="")
 

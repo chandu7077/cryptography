@@ -63,7 +63,7 @@ def decrypt(cipher,space,opt=False):
         return [dec1,dec2]
     else:
         return dec1
-key=input("ENTER KEY FOR PLAYFAIR ENCRYPTION: ")
+key=input("ENTER KEY FOR PLAYFAIR ENCRYPTION: ").replace(" ","")
 text=input("cipher text to be decrypted: ")
 cipher=playfair_decrypt(text,key)
 print("decrypted text: ",cipher)

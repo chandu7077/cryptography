@@ -25,6 +25,7 @@ def des_decrypt(text,key):
         rtext.append(xor(ltext[i-1],f(rtext[i-1],k[15-(i-1)])))
 
     rl16=rtext[-1]+ltext[-1]
+    #print("DECRYPTED HEXADECIMAL FORM:",rl16)
     rl16="".join([rl16[ipinv[i]-1] for i in range(0,len(ipinv))])
     finalhex="".join([hex(int(rl16[i:i+4],2))[2:] for i in range(0,len(rl16),4)])
     return finalhex.upper()
@@ -37,14 +38,17 @@ def des_dec(cipher,key):
         temp=text[i:i+16]
         temp="".join([bin(int(c,16))[2:].zfill(4) for c in temp])
         finalhex+=des_decrypt(temp,key)
+    print("DECRYPTED HEXADECIMAL FORM:",finalhex)
     bits="".join([bin(int(i,16))[2:].zfill(4) for i in finalhex])
     text="".join([chr(int(bits[i:i+8],2)) for i in range(0,len(bits),8) ])
     return text
 
 cipher=input("enter cipher to decrypt: ")
 key=input("enter key which is atleast 64 bits: ")
-key="".join([bin(ord(key[i]))[2:].zfill(8) for i in range(0,len(key))])
-key="".join([hex(int(key[i:i+4],2))[2:] for i in range(0,len(key),4)])
+bool=input("is key hexadecimal(y/n)?")
+if bool=="n":
+    key="".join([bin(ord(key[i]))[2:].zfill(8) for i in range(0,len(key))])
+    key="".join([hex(int(key[i:i+4],2))[2:] for i in range(0,len(key),4)])
 if len(key)>=16:
     key=key[0:16]
     key=key.upper()

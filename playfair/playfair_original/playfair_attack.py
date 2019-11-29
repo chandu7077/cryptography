@@ -1,4 +1,3 @@
-
 #decryption
 #space,alpdic,dicalp,temp=playfair_space(key)
 from playfair_space import playfair_space
@@ -67,9 +66,10 @@ def decrypt(cipher,space,opt=False):
 cipher=input("enter cipher text: ")
 import itertools
 from nltk.corpus import words
-key_length=input("enter key length: ")
+key_length=int(input("enter key length: "))
 #cipher=input("enter cipher text: ")
 keyspace=[''.join(x) for x in itertools.product('abcdefghklmnopqrstuvwxyz', repeat=key_length)]
+en=list(words.words())
 for key in keyspace:
     space,alpdic,dicalp,temp=playfair_space(key)
     dec=playfair_decrypt(cipher,space)
@@ -78,7 +78,7 @@ for key in keyspace:
     leng=len(dec.split())
     cnt=0
     for word in dec.split():
-        if word in words.words():
+        if word in en:
             cnt+=1
     if cnt/leng >0.4:
         print("KEY: ",key,"PLAIN TEXT MAY BE: ",dec)

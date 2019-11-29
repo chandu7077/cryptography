@@ -1,4 +1,5 @@
 alp="abcdefghijklmnopqrstuvwxyz"
+#alp="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 alpdic={}
 dicalp={}
 for i,it in enumerate(alp):
